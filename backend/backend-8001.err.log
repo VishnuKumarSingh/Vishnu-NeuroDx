@@ -1,0 +1,6 @@
+INFO:     Started server process [25764]
+INFO:     Waiting for application startup.
+2026-04-11 16:46:43,044 - app.main - INFO - \U0001f9e0 NeuroAI starting up — loading models...
+2026-04-11 16:46:43,046 - app.main - WARNING - \u26a0\ufe0f  CNN model not found, will use mock predictions: Trained model not found at: C:\Users\ASUS\OneDrive\Documents\Desktop\Vishnu_NeuroAI\NeuroAI\backend\saved_models\brain_tumor_cnn.h5
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)

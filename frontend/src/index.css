@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global Reset & Base ─────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #0A1117;
+  color: #E2E8F0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.light body {
+  background-color: #F8FAFB;
+  color: #0A1117;
+}
+
+html.light * { color-scheme: light; }
+html.light p, html.light span, html.light div, html.light button, html.light a, html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
+  color: #0A1117 !important;
+}
+
+html.light .text-white { color: #0A1117 !important; }
+html.light .text-slate-300 { color: #1A1F2A !important; }
+html.light .text-slate-400 { color: #424856 !important; }
+html.light .text-slate-500 { color: #5A6370 !important; }
+
+/* ── Custom Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0A1117; }
+::-webkit-scrollbar-thumb { background: rgba(0,217,255,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,217,255,0.7); }
+
+html.light ::-webkit-scrollbar-track { background: #F8FAFB; }
+html.light ::-webkit-scrollbar-thumb { background: rgba(0,217,255,0.3); }
+
+/* ── Glassmorphism Utility ───────────────────────────────────────────────── */
+@layer components {
+  .glass-card {
+    @apply relative rounded-2xl border border-white/10 backdrop-blur-xl;
+    background: linear-gradient(145deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.02) 100%);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(0,217,255,0.3);
+    box-shadow: 0 12px 40px 0 rgba(0,217,255,0.2);
+    transform: translateY(-4px);
+  }
+
+  html.light .glass-card {
+    border-color: rgba(0,217,255,0.15);
+    background: linear-gradient(145deg, rgba(248,250,251,0.95) 0%, rgba(240,243,247,0.90) 100%);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.08);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(59,130,246,0.4);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37), 0 0 0 1px rgba(59,130,246,0.2);
+    transform: translateY(-2px);
+  }
+
+  html.light .glass-card-hover:hover {
+    border-color: rgba(0,217,255,0.3);
+    box-shadow: 0 8px 32px 0 rgba(0,217,255,0.15);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #00D9FF 0%, #FF6B9D 50%, #00D9FF 100%);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(0,217,255,0.4), 0 0 40px rgba(0,217,255,0.15);
+  }
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(255,107,157,0.4), 0 0 40px rgba(255,107,157,0.15);
+  }
+  .glow-green {
+    box-shadow: 0 0 20px rgba(0,217,255,0.4), 0 0 40px rgba(0,217,255,0.15);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold text-white transition-all duration-200;
+    background: linear-gradient(135deg, #00D9FF, #00A8CC);
+  }
+  .btn-primary:hover {
+    @apply scale-105;
+    box-shadow: 0 0 30px rgba(0,217,255,0.6);
+    transform: translateY(-2px);
+  }
+  .btn-primary:active {
+    @apply scale-95;
+  }
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed scale-100;
+    box-shadow: none;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200 border border-accent-cyan/30 text-slate-300;
+    background: rgba(255,255,255,0.05);
+  }
+  .btn-secondary:hover {
+    @apply border-accent-cyan/60 text-accent-cyan;
+    background: rgba(0,217,255,0.1);
+    box-shadow: 0 0 20px rgba(0,217,255,0.3);
+    transform: translateY(-2px);
+  }
+  .btn-secondary:active {
+    @apply scale-95;
+  }
+
+  .input-dark {
+    @apply w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500
+           focus:outline-none focus:border-blue-500/60 transition-all duration-200;
+  }
+
+  .section-heading {
+    @apply text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2;
+  }
+}
+
+/* ── Animated background grid ────────────────────────────────────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Animated scan line ───────────────────────────────────────────────────── */
+@keyframes scanLine {
+  0%   { top: -4px; opacity: 1; }
+  80%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.scan-line::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.8), transparent);
+  animation: scanLine 2.5s linear infinite;
+  pointer-events: none;
+}
+
+/* ── Confidence bar animation ─────────────────────────────────────────────── */
+@keyframes fillBar {
+  from { width: 0%; }
+  to   { width: var(--target-width); }
+}
+.confidence-bar {
+  animation: fillBar 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ── Prose markdown styles (for AI explanation) ──────────────────────────── */
+.prose-dark h1,
+.prose-dark h2,
+.prose-dark h3 { @apply text-white font-semibold mb-2; }
+.prose-dark p  { @apply text-slate-300 leading-relaxed mb-3; }
+.prose-dark strong { @apply text-blue-300 font-semibold; }
+.prose-dark em     { @apply text-slate-400 italic; }
+.prose-dark hr { @apply border-white/10 my-4; }
