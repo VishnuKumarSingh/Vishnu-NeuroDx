@@ -76,7 +76,7 @@ export default function Navbar() {
             <Brain size={17} className="text-white" />
           </div>
           <span className="font-bold text-lg tracking-tight hidden sm:block">
-            <span className="text-accent-cyan">MV</span>
+            <span className="text-accent-cyan">Vishnu</span>
             <span className="dark:text-white text-gray-900"> NeuroDx</span>
           </span>
         </Link>
